@@ -64,15 +64,18 @@
                   </div>
                 </div>
                 <form
-                  action="#"
+                  action="/"
+                  method="POST"
                   class="signin-form form-group d-flex flex-column mb-3 gap-2"
                 >
+                    {% csrf_token %}
                   <div class="form-group mt-3">
                     <input
                       type="text"
                       class="form-control"
                       required
-                      placeholder="Email"
+                      placeholder="Username"
+                      name="usuario"
                     />
                   </div>
                   <div
@@ -81,6 +84,7 @@
                     <input
                       id="password-field"
                       type="password"
+                      name="senha"
                       class="form-control"
                       placeholder="Password"
                       required
@@ -118,6 +122,15 @@
             </div>
           </div>
         </div>
+
+        {% if message %}
+        <div class="row justify-content-center">
+          <div class="col-md-7 col-lg-5">
+            <div class="alert alert-danger" role="alert">
+              {{ message }}
+            </div>
+          </div>
+          {% endif %}
       </div>
     </section>
 
